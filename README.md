@@ -10,6 +10,7 @@
 * A wrapper around the 'likely' intrinsic, so it can be used without `unsafe`
 * A wrapper around the 'unlikely' intrinsic, so it can be used without `unsafe`
 * A macro providing something very similar to a do-while loop
+* `u4`, a type alias for documenting that a method uses an unsigned 4-bit integer (implemented as 8-bit, sadly)
 * `u31`, a type alias for documenting that a method uses an unsigned 31-bit integer (implemented as 32-bit, sadly)
 
 

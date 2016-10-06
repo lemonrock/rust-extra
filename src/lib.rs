@@ -10,4 +10,5 @@ extern crate core;
 include!("do_while_loop.rs");
 include!("likely.rs");
 include!("unlikely.rs");
+include!("u4.rs");
 include!("u31.rs");
