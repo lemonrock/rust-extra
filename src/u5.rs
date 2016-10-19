@@ -2,14 +2,6 @@
 // Copyright © 2016 The developers of rust-extra. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/rust-extra/master/COPYRIGHT.
 
 
-#![feature(core_intrinsics)]
-
-extern crate core;
-
-
-include!("do_while_loop.rs");
-include!("likely.rs");
-include!("unlikely.rs");
-include!("u4.rs");
-include!("u5.rs");
-include!("u31.rs");
+// This allows us to document a limit in some methods, even though it is ignored for practical purposes by the compiler
+#[allow(non_camel_case_types)]
+pub type u5 = u8;
