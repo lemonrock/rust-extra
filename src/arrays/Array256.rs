@@ -5,7 +5,7 @@
 #[repr(C, packed)]
 pub struct Array256<T>
 {
-	pub array: [T; 1024]
+	pub array: [T; 256]
 }
 
 impl<T: Copy> Copy for Array256<T>

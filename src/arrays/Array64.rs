@@ -5,7 +5,7 @@
 #[repr(C, packed)]
 pub struct Array64<T>
 {
-	pub array: [T; 1024]
+	pub array: [T; 64]
 }
 
 impl<T: Copy> Copy for Array64<T>
