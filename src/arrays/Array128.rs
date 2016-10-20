@@ -3,10 +3,7 @@
 
 
 #[repr(C, packed)]
-pub struct Array128<T>
-{
-	pub array: [T; 128]
-}
+pub struct Array128<T>(pub [T; 128]);
 
 impl<T: Copy> Copy for Array128<T>
 {
@@ -16,10 +13,7 @@ impl<T: Copy> Clone for Array128<T>
 {
 	fn clone(&self) -> Self
 	{
-		Array128
-		{
-			array: self.array
-		}
+		Array128(self.0)
 	}
 }
 
@@ -27,7 +21,7 @@ impl<T: Debug> Debug for Array128<T>
 {
 	fn fmt(&self, formatter: &mut Formatter) -> Result
 	{
-		self.array[..].fmt(formatter)
+		self.0[..].fmt(formatter)
 	}
 }
 
@@ -35,7 +29,7 @@ impl<T: PartialEq> PartialEq for Array128<T>
 {
 	fn eq(&self, other: &Array128<T>) -> bool
 	{
-		self.array[..].eq(&other.array[..])
+		self.0[..].eq(&other.0[..])
 	}
 }
 
@@ -48,31 +42,31 @@ impl<T: PartialOrd> PartialOrd for Array128<T>
 	#[inline]
 	fn partial_cmp(&self, other: &Array128<T>) -> Option<Ordering>
 	{
-		PartialOrd::partial_cmp(&&self.array[..], &&other.array[..])
+		PartialOrd::partial_cmp(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline]
 	fn lt(&self, other: &Array128<T>) -> bool
 	{
-		PartialOrd::lt(&&self.array[..], &&other.array[..])
+		PartialOrd::lt(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline]
 	fn le(&self, other: &Array128<T>) -> bool
 	{
-		PartialOrd::le(&&self.array[..], &&other.array[..])
+		PartialOrd::le(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline]
 	fn ge(&self, other: &Array128<T>) -> bool
 	{
-		PartialOrd::ge(&&self.array[..], &&other.array[..])
+		PartialOrd::ge(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline]
 	fn gt(&self, other: &Array128<T>) -> bool
 	{
-		PartialOrd::gt(&&self.array[..], &&other.array[..])
+		PartialOrd::gt(&&self.0[..], &&other.0[..])
 	}
 }
 
@@ -81,7 +75,7 @@ impl<T: Ord> Ord for Array128<T>
 	#[inline]
 	fn cmp(&self, other: &Array128<T>) -> Ordering
 	{
-		Ord::cmp(&&self.array[..], &&other.array[..])
+		Ord::cmp(&&self.0[..], &&other.0[..])
 	}
 }
 
@@ -89,7 +83,7 @@ impl<T: Hash> Hash for Array128<T>
 {
 	fn hash<H: Hasher>(&self, state: &mut H)
 	{
-		Hash::hash(&self.array[..], state)
+		Hash::hash(&self.0[..], state)
 	}
 }
 
@@ -100,7 +94,7 @@ impl<'a, T> IntoIterator for &'a Array128<T>
 
 	fn into_iter(self) -> Iter<'a, T>
 	{
-		self.array.iter()
+		self.0.iter()
 	}
 }
 
@@ -111,7 +105,7 @@ impl<'a, T> IntoIterator for &'a mut Array128<T>
 
 	fn into_iter(self) -> IterMut<'a, T>
 	{
-		self.array.iter_mut()
+		self.0.iter_mut()
 	}
 }
 
@@ -120,7 +114,7 @@ impl<T> AsRef<[T]> for Array128<T>
 	#[inline]
 	fn as_ref(&self) -> &[T]
 	{
-		&self.array[..]
+		&self.0[..]
 	}
 }
 
@@ -129,6 +123,6 @@ impl<T> AsMut<[T]> for Array128<T>
 	#[inline]
 	fn as_mut(&mut self) -> &mut [T]
 	{
-		&mut self.array[..]
+		&mut self.0[..]
 	}
 }
