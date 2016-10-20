@@ -2,18 +2,18 @@
 // Copyright © 2016 The developers of rust-extra. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/rust-extra/master/COPYRIGHT.
 
 
-#![feature(core_intrinsics)]
+use ::core::cmp::Ordering;
+use ::core::fmt::Debug;
+use ::core::fmt::Formatter;
+use ::core::fmt::Result;
+use ::core::hash::Hash;
+use ::core::hash::Hasher;
+use ::core::slice::Iter;
+use ::core::slice::IterMut;
 
 
-extern crate core;
-
-
-pub mod arrays;
-
-
-include!("do_while_loop.rs");
-include!("likely.rs");
-include!("unlikely.rs");
-include!("u4.rs");
-include!("u5.rs");
-include!("u31.rs");
+include!("Array64.rs");
+include!("Array128.rs");
+include!("Array256.rs");
+include!("Array512.rs");
+include!("Array1024.rs");
