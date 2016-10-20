@@ -11,6 +11,7 @@ impl<T: Copy> Copy for Array512<T>
 
 impl<T: Copy> Clone for Array512<T>
 {
+	#[inline(always)]
 	fn clone(&self) -> Self
 	{
 		Array512(self.0)
@@ -19,6 +20,7 @@ impl<T: Copy> Clone for Array512<T>
 
 impl<T: Debug> Debug for Array512<T>
 {
+	#[inline(always)]
 	fn fmt(&self, formatter: &mut Formatter) -> Result
 	{
 		self.0[..].fmt(formatter)
@@ -27,6 +29,7 @@ impl<T: Debug> Debug for Array512<T>
 
 impl<T: PartialEq> PartialEq for Array512<T>
 {
+	#[inline(always)]
 	fn eq(&self, other: &Array512<T>) -> bool
 	{
 		self.0[..].eq(&other.0[..])
@@ -39,31 +42,31 @@ impl<T: Eq> Eq for Array512<T>
 
 impl<T: PartialOrd> PartialOrd for Array512<T>
 {
-	#[inline]
+	#[inline(always)]
 	fn partial_cmp(&self, other: &Array512<T>) -> Option<Ordering>
 	{
 		PartialOrd::partial_cmp(&&self.0[..], &&other.0[..])
 	}
 
-	#[inline]
+	#[inline(always)]
 	fn lt(&self, other: &Array512<T>) -> bool
 	{
 		PartialOrd::lt(&&self.0[..], &&other.0[..])
 	}
 
-	#[inline]
+	#[inline(always)]
 	fn le(&self, other: &Array512<T>) -> bool
 	{
 		PartialOrd::le(&&self.0[..], &&other.0[..])
 	}
 
-	#[inline]
+	#[inline(always)]
 	fn ge(&self, other: &Array512<T>) -> bool
 	{
 		PartialOrd::ge(&&self.0[..], &&other.0[..])
 	}
 
-	#[inline]
+	#[inline(always)]
 	fn gt(&self, other: &Array512<T>) -> bool
 	{
 		PartialOrd::gt(&&self.0[..], &&other.0[..])
@@ -72,7 +75,7 @@ impl<T: PartialOrd> PartialOrd for Array512<T>
 
 impl<T: Ord> Ord for Array512<T>
 {
-	#[inline]
+	#[inline(always)]
 	fn cmp(&self, other: &Array512<T>) -> Ordering
 	{
 		Ord::cmp(&&self.0[..], &&other.0[..])
@@ -81,6 +84,7 @@ impl<T: Ord> Ord for Array512<T>
 
 impl<T: Hash> Hash for Array512<T>
 {
+	#[inline(always)]
 	fn hash<H: Hasher>(&self, state: &mut H)
 	{
 		Hash::hash(&self.0[..], state)
@@ -92,6 +96,7 @@ impl<'a, T> IntoIterator for &'a Array512<T>
 	type Item = &'a T;
 	type IntoIter = Iter<'a, T>;
 
+	#[inline(always)]
 	fn into_iter(self) -> Iter<'a, T>
 	{
 		self.0.iter()
@@ -103,6 +108,7 @@ impl<'a, T> IntoIterator for &'a mut Array512<T>
 	type Item = &'a mut T;
 	type IntoIter = IterMut<'a, T>;
 
+	#[inline(always)]
 	fn into_iter(self) -> IterMut<'a, T>
 	{
 		self.0.iter_mut()
@@ -111,7 +117,7 @@ impl<'a, T> IntoIterator for &'a mut Array512<T>
 
 impl<T> AsRef<[T]> for Array512<T>
 {
-	#[inline]
+	#[inline(always)]
 	fn as_ref(&self) -> &[T]
 	{
 		&self.0[..]
@@ -120,7 +126,7 @@ impl<T> AsRef<[T]> for Array512<T>
 
 impl<T> AsMut<[T]> for Array512<T>
 {
-	#[inline]
+	#[inline(always)]
 	fn as_mut(&mut self) -> &mut [T]
 	{
 		&mut self.0[..]
