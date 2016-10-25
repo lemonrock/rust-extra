@@ -12,6 +12,8 @@ use ::core::slice::Iter;
 use ::core::slice::IterMut;
 
 
+include!("Array40.rs");
+include!("Array52.rs");
 include!("Array64.rs");
 include!("Array128.rs");
 include!("Array256.rs");
