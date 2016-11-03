@@ -3,9 +3,15 @@
 
 
 #![feature(core_intrinsics)]
+#![feature(associated_consts)]
 
 
 extern crate core;
+
+
+use ::std::fs::Metadata;
+use ::std::fs::Permissions;
+#[cfg(unix)] use ::std::os::unix::fs::PermissionsExt;
 
 
 pub mod arrays;
@@ -17,3 +23,4 @@ include!("unlikely.rs");
 include!("u4.rs");
 include!("u5.rs");
 include!("u31.rs");
+include!("UnixFileSystemPermissionMode.rs");

@@ -5,6 +5,23 @@
 #[repr(C, packed)]
 pub struct Array52<T>(pub [T; 52]);
 
+impl<T> Array<T> for Array52<T>
+{
+	const Size: usize = 52;
+	
+	#[inline(always)]
+	unsafe fn get_unchecked(&self, index: usize) -> &T
+	{
+		self.0.get_unchecked(index)
+	}
+	
+	#[inline(always)]
+	unsafe fn get_unchecked_mut(&mut self, index: usize) -> &mut T
+	{
+		self.0.get_unchecked_mut(index)
+	}
+}
+
 impl<T: Copy> Copy for Array52<T>
 {
 }

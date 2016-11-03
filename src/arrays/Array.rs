@@ -2,21 +2,13 @@
 // Copyright © 2016 The developers of rust-extra. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/rust-extra/master/COPYRIGHT.
 
 
-use ::core::cmp::Ordering;
-use ::core::fmt::Debug;
-use ::core::fmt::Formatter;
-use ::core::fmt::Result;
-use ::core::hash::Hash;
-use ::core::hash::Hasher;
-use ::core::slice::Iter;
-use ::core::slice::IterMut;
-
-
-include!("Array.rs");
-include!("Array40.rs");
-include!("Array52.rs");
-include!("Array64.rs");
-include!("Array128.rs");
-include!("Array256.rs");
-include!("Array512.rs");
-include!("Array1024.rs");
+pub trait Array<T>
+{
+	const Size: usize;
+	
+	#[inline(always)]
+	unsafe fn get_unchecked(&self, index: usize) -> &T;
+	
+	#[inline(always)]
+	unsafe fn get_unchecked_mut(&mut self, index: usize) -> &mut T;
+}
