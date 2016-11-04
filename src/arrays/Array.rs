@@ -8,6 +8,12 @@ pub trait Array<T>
 	const Mask: usize;
 	
 	#[inline(always)]
+	fn mask() -> usize
+	{
+		Self::Mask
+	}
+	
+	#[inline(always)]
 	unsafe fn get_unchecked(&self, index: usize) -> &T;
 	
 	#[inline(always)]
