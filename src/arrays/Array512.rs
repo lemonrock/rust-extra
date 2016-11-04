@@ -8,6 +8,7 @@ pub struct Array512<T>(pub [T; 512]);
 impl<T> Array<T> for Array512<T>
 {
 	const Size: usize = 512;
+	const Mask: usize = 512 - 1;
 	
 	#[inline(always)]
 	unsafe fn get_unchecked(&self, index: usize) -> &T

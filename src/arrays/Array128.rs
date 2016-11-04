@@ -8,6 +8,7 @@ pub struct Array128<T>(pub [T; 128]);
 impl<T> Array<T> for Array128<T>
 {
 	const Size: usize = 128;
+	const Mask: usize = 128 - 1;
 	
 	#[inline(always)]
 	unsafe fn get_unchecked(&self, index: usize) -> &T

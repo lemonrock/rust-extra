@@ -5,6 +5,7 @@
 pub trait Array<T>
 {
 	const Size: usize;
+	const Mask: usize;
 	
 	#[inline(always)]
 	unsafe fn get_unchecked(&self, index: usize) -> &T;
