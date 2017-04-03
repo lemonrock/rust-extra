@@ -15,6 +15,7 @@ use ::std::fs::Permissions;
 
 
 pub mod arrays;
+pub mod powersOfTwo;
 
 
 include!("do_while_loop.rs");
