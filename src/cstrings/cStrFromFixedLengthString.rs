@@ -3,7 +3,7 @@
 
 
 #[inline(always)]
-fn cStrFromFixedLengthString<'a>(ptr: *const c_char, maximumLength: usize) -> &'a CStr
+pub fn cStrFromFixedLengthString<'a>(ptr: *const c_char, maximumLength: usize) -> &'a CStr
 {
 	let len = strnlen(ptr, maximumLength);
 	if unlikely(len == maximumLength)
