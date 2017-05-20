@@ -9,6 +9,7 @@
 
 
 extern crate core;
+extern crate libc;
 
 
 use ::std::fs::Metadata;
@@ -17,6 +18,7 @@ use ::std::fs::Permissions;
 
 
 pub mod arrays;
+pub mod cstrings;
 pub mod powersOfTwo;
 
 

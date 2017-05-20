@@ -2,8 +2,10 @@
 // Copyright © 2016 The developers of rust-extra. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/lemonrock/rust-extra/master/COPYRIGHT.
 
 
+use ::unlikely;
 use ::libc::c_char;
 use ::libc::strnlen;
+use ::std::ffi::CStr;
 use ::std::mem::transmute;
 use ::std::slice::from_raw_parts;
 

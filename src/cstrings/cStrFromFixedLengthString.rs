@@ -5,13 +5,16 @@
 #[inline(always)]
 pub fn cStrFromFixedLengthString<'a>(ptr: *const c_char, maximumLength: usize) -> &'a CStr
 {
-	let len = strnlen(ptr, maximumLength);
-	if unlikely(len == maximumLength)
+	unsafe
 	{
-		transmute(from_raw_parts(ptr, maximumLength))
-	}
-	else
-	{
-		transmute(from_raw_parts(ptr, len + 1))
+		let len = strnlen(ptr, maximumLength);
+		if unlikely(len == maximumLength)
+		{
+			transmute(from_raw_parts(ptr, maximumLength))
+		}
+		else
+		{
+			transmute(from_raw_parts(ptr, len + 1))
+		}
 	}
 }
