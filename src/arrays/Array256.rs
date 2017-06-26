@@ -21,6 +21,18 @@ impl<T> Array<T> for Array256<T>
 	{
 		self.0.get_unchecked_mut(index)
 	}
+	
+	#[inline(always)]
+	fn as_ptr(&self) -> *const T
+	{
+		self.0.as_ptr()
+	}
+	
+	#[inline(always)]
+	fn as_mut_ptr(&mut self) -> *mut T
+	{
+		self.0.as_mut_ptr()
+	}
 }
 
 impl<T: Copy> Copy for Array256<T>

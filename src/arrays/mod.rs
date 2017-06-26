@@ -13,9 +13,14 @@ use ::core::slice::IterMut;
 
 
 include!("Array.rs");
+include!("Array16.rs");
+include!("Array30.rs");
+include!("Array32.rs");
 include!("Array40.rs");
+include!("Array46.rs");
 include!("Array52.rs");
 include!("Array64.rs");
+include!("Array80.rs");
 include!("Array128.rs");
 include!("Array256.rs");
 include!("Array512.rs");

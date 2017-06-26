@@ -18,4 +18,22 @@ pub trait Array<T>
 	
 	#[inline(always)]
 	unsafe fn get_unchecked_mut(&mut self, index: usize) -> &mut T;
+	
+	#[inline(always)]
+	fn as_ptr(&self) -> *const T;
+	
+	#[inline(always)]
+	fn as_mut_ptr(&mut self) -> *mut T;
+	
+	#[inline(always)]
+	fn as_ptr_at(&self, index: usize) -> *const T
+	{
+		unsafe { self.as_ptr().offset(index as isize) }
+	}
+	
+	#[inline(always)]
+	fn as_mut_ptr_at(&mut self, index: usize) -> *mut T
+	{
+		unsafe { self.as_mut_ptr().offset(index as isize) }
+	}
 }

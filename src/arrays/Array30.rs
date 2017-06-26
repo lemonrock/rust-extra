@@ -3,12 +3,12 @@
 
 
 #[repr(C, packed)]
-pub struct Array64<T>(pub [T; 64]);
+pub struct Array30<T>(pub [T; 30]);
 
-impl<T> Array<T> for Array64<T>
+impl<T> Array<T> for Array30<T>
 {
-	const Size: usize = 64;
-	const Mask: usize = 64 - 1;
+	const Size: usize = 30;
+	const Mask: usize = 30 - 1;
 	
 	#[inline(always)]
 	unsafe fn get_unchecked(&self, index: usize) -> &T
@@ -35,20 +35,20 @@ impl<T> Array<T> for Array64<T>
 	}
 }
 
-impl<T: Copy> Copy for Array64<T>
+impl<T: Copy> Copy for Array30<T>
 {
 }
 
-impl<T: Copy> Clone for Array64<T>
+impl<T: Copy> Clone for Array30<T>
 {
 	#[inline(always)]
 	fn clone(&self) -> Self
 	{
-		Array64(self.0)
+		Array30(self.0)
 	}
 }
 
-impl<T: Debug> Debug for Array64<T>
+impl<T: Debug> Debug for Array30<T>
 {
 	#[inline(always)]
 	fn fmt(&self, formatter: &mut Formatter) -> Result
@@ -57,62 +57,62 @@ impl<T: Debug> Debug for Array64<T>
 	}
 }
 
-impl<T: PartialEq> PartialEq for Array64<T>
+impl<T: PartialEq> PartialEq for Array30<T>
 {
 	#[inline(always)]
-	fn eq(&self, other: &Array64<T>) -> bool
+	fn eq(&self, other: &Array30<T>) -> bool
 	{
 		self.0[..].eq(&other.0[..])
 	}
 }
 
-impl<T: Eq> Eq for Array64<T>
+impl<T: Eq> Eq for Array30<T>
 {
 }
 
-impl<T: PartialOrd> PartialOrd for Array64<T>
+impl<T: PartialOrd> PartialOrd for Array30<T>
 {
 	#[inline(always)]
-	fn partial_cmp(&self, other: &Array64<T>) -> Option<Ordering>
+	fn partial_cmp(&self, other: &Array30<T>) -> Option<Ordering>
 	{
 		PartialOrd::partial_cmp(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline(always)]
-	fn lt(&self, other: &Array64<T>) -> bool
+	fn lt(&self, other: &Array30<T>) -> bool
 	{
 		PartialOrd::lt(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline(always)]
-	fn le(&self, other: &Array64<T>) -> bool
+	fn le(&self, other: &Array30<T>) -> bool
 	{
 		PartialOrd::le(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline(always)]
-	fn ge(&self, other: &Array64<T>) -> bool
+	fn ge(&self, other: &Array30<T>) -> bool
 	{
 		PartialOrd::ge(&&self.0[..], &&other.0[..])
 	}
 
 	#[inline(always)]
-	fn gt(&self, other: &Array64<T>) -> bool
+	fn gt(&self, other: &Array30<T>) -> bool
 	{
 		PartialOrd::gt(&&self.0[..], &&other.0[..])
 	}
 }
 
-impl<T: Ord> Ord for Array64<T>
+impl<T: Ord> Ord for Array30<T>
 {
 	#[inline(always)]
-	fn cmp(&self, other: &Array64<T>) -> Ordering
+	fn cmp(&self, other: &Array30<T>) -> Ordering
 	{
 		Ord::cmp(&&self.0[..], &&other.0[..])
 	}
 }
 
-impl<T: Hash> Hash for Array64<T>
+impl<T: Hash> Hash for Array30<T>
 {
 	#[inline(always)]
 	fn hash<H: Hasher>(&self, state: &mut H)
@@ -121,7 +121,7 @@ impl<T: Hash> Hash for Array64<T>
 	}
 }
 
-impl<'a, T> IntoIterator for &'a Array64<T>
+impl<'a, T> IntoIterator for &'a Array30<T>
 {
 	type Item = &'a T;
 	type IntoIter = Iter<'a, T>;
@@ -133,7 +133,7 @@ impl<'a, T> IntoIterator for &'a Array64<T>
 	}
 }
 
-impl<'a, T> IntoIterator for &'a mut Array64<T>
+impl<'a, T> IntoIterator for &'a mut Array30<T>
 {
 	type Item = &'a mut T;
 	type IntoIter = IterMut<'a, T>;
@@ -145,7 +145,7 @@ impl<'a, T> IntoIterator for &'a mut Array64<T>
 	}
 }
 
-impl<T> AsRef<[T]> for Array64<T>
+impl<T> AsRef<[T]> for Array30<T>
 {
 	#[inline(always)]
 	fn as_ref(&self) -> &[T]
@@ -154,7 +154,7 @@ impl<T> AsRef<[T]> for Array64<T>
 	}
 }
 
-impl<T> AsMut<[T]> for Array64<T>
+impl<T> AsMut<[T]> for Array30<T>
 {
 	#[inline(always)]
 	fn as_mut(&mut self) -> &mut [T]
