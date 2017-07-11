@@ -25,6 +25,7 @@ pub mod powersOfTwo;
 include!("do_while_loop.rs");
 include!("likely.rs");
 include!("offsetOf.rs");
+include!("true_immutable_thread_local.rs");
 include!("unlikely.rs");
 include!("u4.rs");
 include!("u5.rs");

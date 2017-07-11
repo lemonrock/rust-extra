@@ -3,21 +3,22 @@
 
 
 #[macro_export]
-macro_rules! do_while_loop
+macro_rules! true_immutable_thread_local
 {
-    (
-        do
-        $body:block
-        while $cond:expr
-    ) =>
-    {
-        // A while statement can use {} instead of () if the condition is a block
-        while
-        {
-            $body;
-            $cond
-        }
-        {
-        }
-    };
+	($type: ty, $initializer: block) =>
+	{
+		{
+			// Done this way so that values do not need to implement 'Sync', which is pointless for a thread local static...
+			#[thread_local] static mut THREAD_LOCAL: *const () = ::std::ptr::null_mut();
+			unsafe
+			{
+				if THREAD_LOCAL.is_null()
+				{
+					let value = Box::new($initializer);
+					THREAD_LOCAL = Box::into_raw(value) as *const _;
+				}
+				&*(THREAD_LOCAL as *const $type)
+			}
+		}
+	}
 }
