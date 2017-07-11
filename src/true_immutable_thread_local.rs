@@ -12,7 +12,7 @@ macro_rules! true_immutable_thread_local
 			#[thread_local] static mut THREAD_LOCAL: *const () = ::std::ptr::null_mut();
 			unsafe
 			{
-				if THREAD_LOCAL.is_null()
+				if $crate::unlikely(THREAD_LOCAL.is_null())
 				{
 					let value = Box::new($initializer);
 					THREAD_LOCAL = Box::into_raw(value) as *const _;
